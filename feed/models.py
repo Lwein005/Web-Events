@@ -7,11 +7,11 @@ from datetime import datetime
 # Create your models here.
 
 class Event(models.Model):
-	host = models.ForeignKeu('auth.User')
+	host = models.ForeignKey('auth.User')
 	title = models.CharField(max_length=100)
 	description = models.TextField()
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-	event_date = models.DateTimeField(input_formats=['%m/%d/%Y %H:%M'])
+	event_date = models.DateTimeField(default=datetime.now, blank=True)
 	image = models.FileField(null=True, blank=True)
 
 	def __unicode__(self):
